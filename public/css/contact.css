@@ -1,0 +1,136 @@
+:root {
+    /* - colors - */
+    --primary-color: #48a240;
+    --secondary-color: #45a0cb;
+    --heading-text-color: #000000;
+    --paragraph-text-color: #333333;
+
+    /* - font sizes - */
+    --fs-display-large: 3rem;
+    --fs-display-medium: 2.5rem;
+    --fs-display-small: 2rem;
+    --fs-heading-large: 1.75rem;
+    --fs-heading-medium: 1.4rem;
+    --fs-heading-small: 1.2rem;
+    --fs-body: 1rem;
+
+    /* - font weights - */
+    --fw-display: 800;
+    --fw-heading: 600;
+    --fw-body: 400;
+
+    /* - line heights */
+    --lh-heading-multiplier: 1.2;
+    --lh-body-multiplier: 1.5;
+}
+
+.hero-section {
+    padding-bottom: 44px;
+    height: 80dvh;
+    position: relative;
+}
+
+.map {
+    width: 100%;
+    height: 100%;
+}
+
+.information-section {
+    display: flex;
+    flex-direction: row;
+    padding-inline: 5rem;
+    padding-bottom: 44px;
+    gap: 5rem;
+}
+
+.contact-information {
+    width: 50%;
+}
+
+.picture {
+    aspect-ratio: 4 / 3;
+}
+
+.picture > img {
+    max-width: 100%;
+    height: 100%;
+}
+
+.card-contact {
+    background-color: #48a240;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.card-contact h3,
+.card-contact p {
+    margin: 0;
+    color: white;
+}
+
+.card-contact a {
+    background-color: white;
+    color: #48a240;
+    border: none;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.card-contact a:hover {
+    background-color: #e6e6e6;
+}
+
+/* Instagram feed section */
+.instagram-feed-section {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-inline: 5rem;
+    padding-bottom: 3rem;
+}
+
+.instagram-post {
+    width: 33.3%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #dddddd;
+}
+
+.post-header {
+    padding-block: .25rem;
+    padding-inline: .5rem;
+    border-bottom: 1px solid #dddddd;
+}
+
+.account {
+    font-weight: bold;
+}
+
+.post-image {
+    width: 100%;
+    aspect-ratio: 1/1;
+}
+
+.caption {
+    color: #010101;
+    padding-block: .25rem;
+    padding-inline: .5rem;
+    max-height: 100%;
+    overflow: hidden;
+    white-space: wrap;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+}
+
+.post-footer {
+    display: flex;
+    flex-direction: row;
+    padding-block: .25rem;
+    padding-inline: .5rem;
+}

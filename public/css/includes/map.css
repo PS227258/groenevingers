@@ -1,0 +1,133 @@
+#foldable {
+    width: 320px;
+    z-index: 1;
+    position: relative;
+    background: white;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+#form {
+    margin-top: 10px;
+}
+
+.icon {
+    background-size: cover;
+    height: 30px;
+    width: 30px;
+}
+
+.tt-foldable__button.-top-right {
+    right: 16px;
+    top: 16px;
+}
+
+.tt-icon-size {
+    height: 18px !important;
+    padding: 8px;
+    width: 18px !important;
+}
+
+.tt-icon.-start {
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cpath fill-rule='nonzero' stroke='%23E5E5E5' d='M-19.5-19.5h55v55h-55z'/%3E%3Cpath fill='%237A7E80' d='M15.493.015a.4.4 0 0 1 .492.493L11.728 15.66a.4.4 0 0 1-.757.036l-2.914-7.55a.4.4 0 0 0-.23-.229L.257 5.015a.4.4 0 0 1 .035-.758l15.2-4.242z'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+.tt-icon.-finish {
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='17' viewBox='0 0 14 17'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cpath fill-rule='nonzero' stroke='%23E5E5E5' d='M-20.5-19.5h55v55h-55z'/%3E%3Cpath fill='%237A7E80' d='M5.811 2.194V0H8.02v2.28h1.765V0H14v16.406h-2.108V6.837H9.784V4.558H8.019v2.28H5.811v-2.28H7.92V2.28H5.933v2.193H3.946v2.194H2.108v9.74H0V0h3.946v2.194h1.865zm4.316 2.364h1.765V2.28h-1.765v2.278zM2.108 2.28v2.108h1.717V2.28H2.108z'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+.icon-spacing-right {
+    margin-right: 12px;
+    margin-top: 22px;
+}
+
+.icon-spacing-left {
+    margin-left: 12px;
+    margin-top: 24px;
+}
+
+.tt-search-box-input {
+    width: calc(100% - 25px) !important;
+}
+
+.tt-search-box-input-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.searchbox-container {
+    display: flex;
+    position: relative;
+    z-index: 10;
+}
+
+.searchbox-container > .tt-search-box {
+    flex: 1;
+    padding-right: 26px;
+}
+
+.my-location-button {
+    background-image: url("https://api.tomtom.com/maps-sdk-for-web/cdn/static/my-location.svg");
+    cursor: pointer;
+    margin-left: 7px;
+    padding: 12px;
+}
+
+.my-location-button:hover {
+    background-image: url("https://api.tomtom.com/maps-sdk-for-web/cdn/static/my-location-hover.svg");
+}
+
+.route-marker {
+    align-items: center;
+    background-color: #4a90e2;
+    border: solid 3px #2faaff;
+    border-radius: 50%;
+    display: flex;
+    height: 32px;
+    justify-content: center;
+    transition:
+        width 0.1s,
+        height 0.1s;
+    width: 32px;
+}
+
+html {
+    height: 100%;
+}
+
+.marker-icon {
+    background-position: center;
+    background-size: 22px 22px;
+    border-radius: 50%;
+    height: 22px;
+    left: 4px;
+    position: absolute;
+    text-align: center;
+    top: 3px;
+    transform: rotate(45deg);
+    width: 22px;
+}
+.marker {
+    height: 30px;
+    width: 30px;
+}
+.marker-content {
+    background: #c30b82;
+    border-radius: 50% 50% 50% 0;
+    height: 30px;
+    left: 50%;
+    margin: -15px 0 0 -15px;
+    position: absolute;
+    top: 50%;
+    transform: rotate(-45deg);
+    width: 30px;
+}
+.marker-content::before {
+    background: #ffffff;
+    border-radius: 50%;
+    content: "";
+    height: 24px;
+    margin: 3px 0 0 3px;
+    position: absolute;
+    width: 24px;
+}

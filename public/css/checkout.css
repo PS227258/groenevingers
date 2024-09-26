@@ -1,0 +1,123 @@
+:root {
+    /* - colors - */
+    --primary-color: #48a240;
+    --secondary-color: #45a0cb;
+    --heading-text-color: #000000;
+    --paragraph-text-color: #333333;
+
+    /* - font sizes - */
+    --fs-display-large: 3rem;
+    --fs-display-medium: 2.5rem;
+    --fs-display-small: 2rem;
+    --fs-heading-large: 1.75rem;
+    --fs-heading-medium: 1.4rem;
+    --fs-heading-small: 1.2rem;
+    --fs-body: 1rem;
+
+    /* - font weights - */
+    --fw-display: 800;
+    --fw-heading: 600;
+    --fw-body: 400;
+
+    /* - line heights */
+    --lh-heading-multiplier: 1.2;
+    --lh-body-multiplier: 1.5;
+}
+
+.wrapper {
+    min-height: 85vh;
+    min-height: 85dvh;
+    padding-inline: 5rem;
+    padding-bottom: 44px;
+}
+
+.title {
+    text-align: center;
+    color: var(--primary-color);
+    padding-block: 44px;
+}
+
+.columns {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 2.5rem;
+}
+
+.order-form {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: .75rem;
+}
+
+.input-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+    width: 100%;
+}
+
+.input-label {
+    font-size: var(--fs-body);
+    color: var(--paragraph-text-color);
+}
+
+.input-field {
+    border: 1px solid #b3b3b3;
+    border-radius: .25rem;
+    padding: .75rem .75rem;
+}
+
+.input-field:focus,
+.input-field:focus-visible {
+    border: 1px solid #00000000;
+    outline: 2px solid var(--primary-color);
+}
+
+.checkout-btn {
+    cursor: pointer;
+    font-size: var(--fs-body);
+    font-weight: var(--fw-display);
+    text-transform: uppercase;
+    padding: 0.5rem 1.5rem;
+    border: 1px solid var(--primary-color);
+    border-radius: 0.15rem;
+    width: max-content;
+    color: #ffffff;
+    background-color: var(--primary-color);
+    margin-top: 1rem;
+}
+
+.checkout-btn:hover {
+    color: var(--primary-color);
+    background-color: #ffffff;
+}
+
+.order-overview {
+    width: 50%;
+}
+
+.order-overview-header,
+.order-overview-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.order-overview-footer {
+    padding-top: .5rem;
+}
+
+.order-overview-title {
+    color: var(--primary-color);
+}
+
+.product-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding-block: .5rem;
+}

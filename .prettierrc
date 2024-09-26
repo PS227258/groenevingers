@@ -1,0 +1,8 @@
+{
+    "tabWidth": 4,
+    "semi": false,
+    "singleQuote": false,
+    "quoteProps": "as-needed",
+    "trailingComma": "es5",
+    "plugins": ["@prettier/plugin-php"]
+}

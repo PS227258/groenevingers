@@ -1,0 +1,118 @@
+:root {
+    /* - colors - */
+    --primary-color: #48a240;
+    --secondary-color: #45a0cb;
+    --heading-text-color: #000000;
+    --paragraph-text-color: #333333;
+
+    /* - font sizes - */
+    --fs-display-large: 3rem;
+    --fs-display-medium: 2.5rem;
+    --fs-display-small: 2rem;
+    --fs-heading-large: 1.75rem;
+    --fs-heading-medium: 1.4rem;
+    --fs-heading-small: 1.2rem;
+    --fs-body: 1rem;
+
+    /* - font weights - */
+    --fw-display: 800;
+    --fw-heading: 600;
+    --fw-body: 400;
+
+    /* - line heights */
+    --lh-heading-multiplier: 1.2;
+    --lh-body-multiplier: 1.5;
+}
+
+.main-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1.5rem 0.25rem;
+    transition: all 0.5s;
+    background-color: #efefef;
+}
+
+@media (min-width: 900px) {
+    .main-footer {
+        padding-inline: 5rem;
+    }
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 45%;
+}
+
+.contact-list {
+    color: var(--paragraph-text-color);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 50%;
+    max-width: 200px;
+}
+
+.contact-information {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.phone,
+.location,
+.zipcode {
+    text-wrap: nowrap;
+}
+
+.copyright {
+    color: var(--paragraph-text-color);
+}
+
+.socials-list {
+    color: var(--paragraph-text-color);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.socials-list > a {
+    color: var(--paragraph-text-color);
+    text-decoration: none;
+    width: fit-content;
+}
+
+.language-selector-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.language-selector {
+    font-family: "Inter", sans-serif;
+    font-size: var(--fs-body);
+    padding-right: 2.5rem;
+    padding-block: 0.25rem;
+    border-radius: 0.5rem;
+}
+
+.socials-list img {
+    width: 30px;
+}
+
+.logo {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.logo-img {
+    align-self: flex-end;
+    justify-self: flex-end;
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+    aspect-ratio: 481 / 450;
+}

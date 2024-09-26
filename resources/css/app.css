@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.ontvangen {
+    background-color: #8b3ffc16;
+    border: 2px solid #8a3ffc;
+    color: #8a3ffc;
+}
+
+.betaald {
+    background-color: #ff832b16;
+    border: 2px solid #ff832b;
+    color: #ff832b;
+}
+
+.verwerkt {
+    background-color: #f1c21b16;    
+    border: 2px solid #f1c21b;
+    color: #f1c21b;
+}
+
+.verzonden {
+    background-color: #24A14816;    
+    border: 2px solid #24A148;
+    color: #24A148;
+}
+
+.afgeleverd {
+    background-color: #0043ce16;    
+    border: 2px solid #0043ce;
+    color: #0043ce;
+}
+
+.geannuleerd {
+    background-color: #da1e2816;    
+    border: 2px solid #da1e28;
+    color: #da1e28;
+}
+
+.verpakken {
+    background-color: transparent;
+    border: 2px solid #cfcfcf;
+    color: #cfcfcf;
+}
+
+.gereed {
+    background-color: transparent;
+    border: 2px solid #24A148;
+    color: #24A148;
+}
+
+.retour {
+    background-color: transparent;    
+    border: 2px solid #da1e28;
+    color: #da1e28;
+}
