@@ -3,7 +3,7 @@ run-name: ${{ github.actor }} is trying to deploy groenevingers.
 
 on: [push]
 jobs:
-    Explore-Github-Actions:
+    Groenevingers-Deployment:
         runs-on: ubuntu-latest
         steps:
             - run: echo "The Job was automatically triggered by a ${{ github.event_name }} event."
