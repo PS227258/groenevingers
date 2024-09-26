@@ -81,17 +81,6 @@
                 <div class="order-overview-footer">
                     <p>Totaal:</p>
                     <p>€ {{ number_format($order->price, 2, ',') }}</p>
-                
-                    <p>Prijs inclusief 9% BTW:</p>
-                    <p>€ {{ number_format($order->btw_price, 2, ',', '') }}</p>
-                
-                    <p>Eventuele verzendkosten:</p>
-                    <p>€ {{ number_format($order->ship_price, 2, ',', '') }}</p>
-                </div>
-                </br>
-                <div class="order-overview-footer">
-                    <h5>Totaalprijs:</h5>
-                    <h5>€ {{ number_format($order->total_price, 2, ',', '') }}</h5>
                 </div>
             </div>
 
