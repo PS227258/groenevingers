@@ -1,9 +1,9 @@
-name: Groenevingers Deployment
+name: Laravel deployment
 run-name: ${{ github.actor }} is trying to deploy groenevingers.
 
 on: [push]
 jobs:
-    Groenevingers-Deployment:
+    build:
         runs-on: ubuntu-latest
         steps:
             - run: echo "The Job was automatically triggered by a ${{ github.event_name }} event."
