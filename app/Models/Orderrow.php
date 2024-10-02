@@ -16,11 +16,11 @@ class Orderrow extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        "order_id",
-        "status_id",
-        "product_id",
-        "quantity",
-        "price"
+        'order_id',
+        'status_id',
+        'product_id',
+        'quantity',
+        'price',
     ];
 
     /**

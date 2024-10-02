@@ -3,8 +3,8 @@
 namespace Database\Factories;
 
 use App\Models\Order;
-use App\Models\Product;
 use App\Models\OrderrowStatus;
+use App\Models\Product;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -23,13 +23,13 @@ class OrderrowFactory extends Factory
         $updatedAt = $this->faker->dateTimeBetween($createdAt, 'now'); // Random date between created_at and now
 
         return [
-            "order_id" => Order::factory(),
-            "product_id" => Product::inRandomOrder()->first()->id,
-            "status_id" => OrderrowStatus::inRandomOrder()->first()->id,
-            "quantity" => fake()->randomFloat(0, 1, 9),
-            "price" => Product::inRandomOrder()->first()->price,
-            "created_at" => $createdAt,
-            "updated_at" => $updatedAt
+            'order_id' => Order::factory(),
+            'product_id' => Product::inRandomOrder()->first()->id,
+            'status_id' => OrderrowStatus::inRandomOrder()->first()->id,
+            'quantity' => fake()->randomFloat(0, 1, 9),
+            'price' => Product::inRandomOrder()->first()->price,
+            'created_at' => $createdAt,
+            'updated_at' => $updatedAt,
         ];
     }
 }

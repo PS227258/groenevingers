@@ -10,7 +10,6 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Propaganistas\LaravelPhone\Rules\Phone;
-use LaravelDaily\LaravelCharts\Classes\LaravelChart;
 
 class UserController extends Controller
 {
@@ -21,7 +20,7 @@ class UserController extends Controller
     {
         $users = User::all();
 
-        return view("users.index", compact("users"));
+        return view('users.index', compact('users'));
     }
 
     /**
@@ -34,11 +33,11 @@ class UserController extends Controller
         $branches = Branch::all();
         $roles = Role::all();
 
-        return view("users.edit", [
-            "user" => $user,
-            "statuses" => $statuses,
-            "branches" => $branches,
-            "roles" => $roles,
+        return view('users.edit', [
+            'user' => $user,
+            'statuses' => $statuses,
+            'branches' => $branches,
+            'roles' => $roles,
         ]);
     }
 
@@ -86,9 +85,8 @@ class UserController extends Controller
 
         $user->update($updateData);
 
-        return redirect()->route("users.index")->with('success', 'User successfully updated');
+        return redirect()->route('users.index')->with('success', 'User successfully updated');
     }
-
 
     /**
      * Remove the specified resource from storage.
@@ -98,6 +96,6 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $user->delete();
 
-        return redirect()->route("users.index")->with("success", "User successfully deleted");
+        return redirect()->route('users.index')->with('success', 'User successfully deleted');
     }
 }

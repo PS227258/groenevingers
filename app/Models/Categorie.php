@@ -15,7 +15,7 @@ class Categorie extends Model
      *
      * @var array<int, string>
      */
-    protected $fillable = ["name"];
+    protected $fillable = ['name'];
 
     /**
      * Defines the relation between products and categories
@@ -27,8 +27,8 @@ class Categorie extends Model
 
     /**
      * Get a categorie row from the database using its id
-     * 
-     * @param int $id id of the categorie to fetch
+     *
+     * @param  int  $id  id of the categorie to fetch
      * @return Categorie an instance of the categorie model
      */
     public static function getCategorie($id)

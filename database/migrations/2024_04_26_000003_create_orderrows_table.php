@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('orderrows', function (Blueprint $table) {
-            $table->engine = "InnoDB";
+            $table->engine = 'InnoDB';
             $table->id();
             $table->unsignedBigInteger('order_id')->index()->default(1);
             $table->unsignedBigInteger('status_id')->index()->default(1);

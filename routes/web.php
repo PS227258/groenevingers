@@ -8,12 +8,11 @@ use App\Http\Controllers\ManagementController;
 use App\Http\Controllers\OAuthLoginController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrderManagementController;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\ShopController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\UserController;
 use App\Http\Controllers\PostcodeController;
-use App\Http\Middleware\EnsureRoleIsValid;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ShopController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,26 +27,26 @@ use Illuminate\Support\Facades\Route;
 */
 
 /* homepage routes */
-Route::get("/", [HomepageController::class, "index"])->name("homepage.index");
+Route::get('/', [HomepageController::class, 'index'])->name('homepage.index');
 
 /* shop routes */
-Route::resource("/shop", ShopController::class)->only(["index", "show"]);
+Route::resource('/shop', ShopController::class)->only(['index', 'show']);
 
 /* order routes */
-Route::resource("/order", OrderController::class)->only(["index", "store"]);
-Route::patch("/order", [OrderController::class, 'setCustomerInformation'])->name('order.setCustomerInformation');
+Route::resource('/order', OrderController::class)->only(['index', 'store']);
+Route::patch('/order', [OrderController::class, 'setCustomerInformation'])->name('order.setCustomerInformation');
 Route::delete('/orderrow/{id}', [OrderController::class, 'destroyOrderrow'])->name('orderrow.destroy');
 
 /* checkout routes */
-Route::get("/checkout", [CheckoutController::class, 'index'])->name('checkout.index');
+Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
 
 /* contact routes */
-Route::get("/contact", function () {
-    return view("contact");
-})->name("contact.index");
+Route::get('/contact', function () {
+    return view('contact');
+})->name('contact.index');
 
 /* pdf routes */
-Route::get("/get-pdf", [DomPdfController::class, "getPdf"])->name("pdf.index");
+Route::get('/get-pdf', [DomPdfController::class, 'getPdf'])->name('pdf.index');
 
 /* Google OAuth routes */
 Route::get('/google/redirect', [OAuthLoginController::class, 'redirectToGoogle'])->name('google.redirect');
@@ -62,46 +61,46 @@ Route::get('/postcode-lookup', [PostcodeController::class, 'showLookupForm'])->n
 Route::post('/postcode-lookup', [PostcodeController::class, 'lookup'])->name('postcode.lookup');
 
 /* dashboard routes */
-Route::get("/dashboard", [DashboardController::class, "index"])->middleware(["auth", "verified"])->name("dashboard");
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 /* routes only accessible to authenticated users */
-Route::middleware("auth")->group(function () {
+Route::middleware('auth')->group(function () {
     /* - profile routes - */
-    Route::get("/profile", [ProfileController::class, "edit"])->name("profile.edit");
-    Route::patch("/profile", [ProfileController::class, "update"])->name("profile.update");
-    Route::delete("/profile", [ProfileController::class, "destroy"])->name("profile.destroy");
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     /* - user routes - */
     Route::post('/user/{id}/update', [UserController::class, 'update'])->name('user.update');
-    Route::get("/dashboard/users", [UserController::class, "index"])->name("users.index");
+    Route::get('/dashboard/users', [UserController::class, 'index'])->name('users.index');
 
     /* - product routes - */
-    Route::get("/dashboard/products", [ProductController::class, "index"])->name("products.index");
+    Route::get('/dashboard/products', [ProductController::class, 'index'])->name('products.index');
 });
 
 /* routes only accessible to Administrators, Accountants and Managers */
-Route::middleware("auth", "verified", "role:Admin,Accountant,Manager")->group(function () {
+Route::middleware('auth', 'verified', 'role:Admin,Accountant,Manager')->group(function () {
     /* - user routes - */
-    Route::resource("/dashboard/users", UserController::class)->except(["index", "show", "create", "store"]);
+    Route::resource('/dashboard/users', UserController::class)->except(['index', 'show', 'create', 'store']);
 
     /* - product routes - */
-    Route::resource("/dashboard/products", ProductController::class)->except(["index"]);
+    Route::resource('/dashboard/products', ProductController::class)->except(['index']);
 });
 
 /* routes only accessible to Administrators and Accountants */
-Route::middleware(["auth", "verified", "role:Admin,Accountant"])->group(function () {
+Route::middleware(['auth', 'verified', 'role:Admin,Accountant'])->group(function () {
     /* - management routes - */
-    Route::resource("/dashboard/management", ManagementController::class)->only(['index', 'show', 'create', 'store', 'update']);
+    Route::resource('/dashboard/management', ManagementController::class)->only(['index', 'show', 'create', 'store', 'update']);
 
     /* - order management routes - */
-    Route::delete("/dashboard/orders/{id}/{rowId}", [OrderManagementController::class, "destroyOrderRow"])->name('orders.destroyOrderRow');
-    Route::post("/dashboard/orders/updaterow/{id}", [OrderManagementController::class, "updateOrderRow"])->name('orders.updateOrderRow');
-    Route::post("/dashboard/orders/update/{id}/{statusId}", [OrderManagementController::class, "updateStatus"])->name('orders.updateStatus');
-    Route::post("/dashboard/orders/rollback/{id}/{statusId}", [OrderManagementController::class, "rollbackStatus"])->name('orders.rollbackStatus');
-    Route::post("/dashboard/orders/{id}", [OrderManagementController::class, "cancelOrder"])->name('orders.cancelOrder');
-    Route::get("/dashboard/orders/sort/{key}", [OrderManagementController::class, "sortOrders"])->name('orders.sortOrders');
-    Route::patch("/dashboard/orders/update/{id}", [OrderManagementController::class, "updateOrderInformation"])->name('orders.updateOrderInformation');
-    Route::resource("/dashboard/orders", OrderManagementController::class)->except(['create', 'store', 'update', 'destroy']);
+    Route::delete('/dashboard/orders/{id}/{rowId}', [OrderManagementController::class, 'destroyOrderRow'])->name('orders.destroyOrderRow');
+    Route::post('/dashboard/orders/updaterow/{id}', [OrderManagementController::class, 'updateOrderRow'])->name('orders.updateOrderRow');
+    Route::post('/dashboard/orders/update/{id}/{statusId}', [OrderManagementController::class, 'updateStatus'])->name('orders.updateStatus');
+    Route::post('/dashboard/orders/rollback/{id}/{statusId}', [OrderManagementController::class, 'rollbackStatus'])->name('orders.rollbackStatus');
+    Route::post('/dashboard/orders/{id}', [OrderManagementController::class, 'cancelOrder'])->name('orders.cancelOrder');
+    Route::get('/dashboard/orders/sort/{key}', [OrderManagementController::class, 'sortOrders'])->name('orders.sortOrders');
+    Route::patch('/dashboard/orders/update/{id}', [OrderManagementController::class, 'updateOrderInformation'])->name('orders.updateOrderInformation');
+    Route::resource('/dashboard/orders', OrderManagementController::class)->except(['create', 'store', 'update', 'destroy']);
 });
 
-require __DIR__ . "/auth.php";
+require __DIR__.'/auth.php';

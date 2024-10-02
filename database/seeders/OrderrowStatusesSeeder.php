@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -14,15 +13,15 @@ class OrderrowStatusesSeeder extends Seeder
     public function run(): void
     {
         DB::table('orderrow_statuses')->insert([
-            'name' => 'Verpakken'
+            'name' => 'Verpakken',
         ]);
 
         DB::table('orderrow_statuses')->insert([
-            'name' => 'Gereed'
+            'name' => 'Gereed',
         ]);
 
         DB::table('orderrow_statuses')->insert([
-            'name' => 'Retour'
+            'name' => 'Retour',
         ]);
     }
 }

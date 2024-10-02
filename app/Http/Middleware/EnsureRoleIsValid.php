@@ -12,14 +12,14 @@ class EnsureRoleIsValid
     /**
      * Check if authenticated user has the right permissions by role
      *
-     * @param \App\Models\Role $roles *`Any`* for permissions by any role
+     * @param  \App\Models\Role  $roles  *`Any`* for permissions by any role
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
     public function handle(Request $request, Closure $next, ...$roles): Response
     {
         $user = Auth::user();
 
-        if (in_array("Any", $roles)) {
+        if (in_array('Any', $roles)) {
             return $next($request);
         }
 

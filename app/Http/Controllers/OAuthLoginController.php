@@ -3,11 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Illuminate\Http\Request;
-use Laravel\Socialite\Facades\Socialite;
-use Illuminate\Support\Facades\Auth;
 use App\Providers\RouteServiceProvider;
-use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Auth;
+use Laravel\Socialite\Facades\Socialite;
 
 class OAuthLoginController extends Controller
 {
@@ -21,9 +19,8 @@ class OAuthLoginController extends Controller
         $googleUser = Socialite::driver('google')->stateless()->user();
 
         $user = User::where('email', $googleUser->email)->first();
-        if(!$user)
-        {
-            return view("auth.login");
+        if (! $user) {
+            return view('auth.login');
         }
 
         Auth::login($user);
@@ -41,9 +38,8 @@ class OAuthLoginController extends Controller
         $githubUser = Socialite::driver('github')->user();
         $user = User::where('email', $githubUser->email)->first();
 
-        if(!$user)
-        { 
-            return view("auth.login");
+        if (! $user) {
+            return view('auth.login');
         }
 
         Auth::login($user);

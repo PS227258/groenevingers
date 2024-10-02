@@ -12,20 +12,20 @@ class CategoriesSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table("categories")->insert([
-            "name" => "Kamerplanten",
+        DB::table('categories')->insert([
+            'name' => 'Kamerplanten',
         ]);
 
-        DB::table("categories")->insert([
-            "name" => "Tuinplanten",
+        DB::table('categories')->insert([
+            'name' => 'Tuinplanten',
         ]);
 
-        DB::table("categories")->insert([
-            "name" => "Accessoires",
+        DB::table('categories')->insert([
+            'name' => 'Accessoires',
         ]);
 
-        DB::table("categories")->insert([
-            "name" => "Kunstbloemen",
+        DB::table('categories')->insert([
+            'name' => 'Kunstbloemen',
         ]);
     }
 }

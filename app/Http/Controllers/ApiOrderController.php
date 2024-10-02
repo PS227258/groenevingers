@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
-use Illuminate\Http\Request;
 
 class ApiOrderController extends Controller
 {
@@ -13,6 +12,7 @@ class ApiOrderController extends Controller
     public function index()
     {
         $orders = Order::with('Orderrow')->get();
+
         return $orders;
     }
 
@@ -22,6 +22,7 @@ class ApiOrderController extends Controller
     public function show(string $id)
     {
         $order = Order::with('Orderrow')->find($id);
+
         return $order;
     }
 }

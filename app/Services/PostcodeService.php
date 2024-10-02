@@ -17,12 +17,12 @@ class PostcodeService
         $url = 'https://json.api-postcode.nl'; // Controleer of dit de correcte URL is
         $params = [
             'postcode' => $postcode,
-            'number' => $houseNumber
+            'number' => $houseNumber,
         ];
 
         // Verstuur het verzoek met de token header
         $response = Http::withHeaders([
-            'token' => $apiKey
+            'token' => $apiKey,
         ])->get($url, $params);
 
         // Debugging: Status code en response body
@@ -41,7 +41,7 @@ class PostcodeService
                     'postcode' => $result['postcode'],
                     'province' => $result['province'],
                     'latitude' => $result['latitude'],
-                    'longitude' => $result['longitude']
+                    'longitude' => $result['longitude'],
                 ];
             } else {
                 return 'Jammer, geen resultaat gevonden.';

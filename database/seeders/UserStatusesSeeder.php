@@ -12,16 +12,16 @@ class UserStatusesSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table("user_statuses")->insert([
-            "name" => "Actief",
+        DB::table('user_statuses')->insert([
+            'name' => 'Actief',
         ]);
 
-        DB::table("user_statuses")->insert([
-            "name" => "Ziek",
+        DB::table('user_statuses')->insert([
+            'name' => 'Ziek',
         ]);
 
-        DB::table("user_statuses")->insert([
-            "name" => "Vakantie",
+        DB::table('user_statuses')->insert([
+            'name' => 'Vakantie',
         ]);
     }
 }

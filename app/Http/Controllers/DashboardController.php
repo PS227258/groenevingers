@@ -34,11 +34,11 @@ class DashboardController extends Controller
             'chart_color' => '110,152,199',
             'chart_type' => 'line',
             'chart_height' => '400px',
-            'show_blank_data' => 'true'
+            'show_blank_data' => 'true',
         ];
 
         $orderChart = new LaravelChart($order_chart_options);
 
-        return view("dashboard", compact(["userChart", "orderChart"]));
+        return view('dashboard', compact(['userChart', 'orderChart']));
     }
 }

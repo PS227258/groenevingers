@@ -21,7 +21,7 @@ class RegisteredUserController extends Controller
      */
     public function create(): View
     {
-        return view("auth.register");
+        return view('auth.register');
     }
 
     /**
@@ -32,23 +32,22 @@ class RegisteredUserController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
-            "name" => "required|string|max:255",
-            "email" =>
-                "required|string|lowercase|email|max:255|unique:" . User::class,
-            "phone" => ["required", "regex:/^(?:(?:\+|00)31|0)(?:6|((?:2|3|4|5|6|7|8|9)[0-9]))\d{7,8}$/"], // Nederlandse telefoonnummers regex
-            "password" => ["required", "confirmed", Rules\Password::defaults()],
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|lowercase|email|max:255|unique:'.User::class,
+            'phone' => ['required', "regex:/^(?:(?:\+|00)31|0)(?:6|((?:2|3|4|5|6|7|8|9)[0-9]))\d{7,8}$/"], // Nederlandse telefoonnummers regex
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
         $user = User::create([
-            "name" => $request->name,
-            "email" => $request->email,
-            "phone" => $request->phone,
-            "password" => Hash::make($request->password),
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'password' => Hash::make($request->password),
         ]);
 
         event(new Registered($user));
 
-        Avatar::create($request->name)->save(storage_path('app/public/avatar-' . $user->id . '.png'));
+        Avatar::create($request->name)->save(storage_path('app/public/avatar-'.$user->id.'.png'));
 
         Auth::login($user);
 

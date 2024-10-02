@@ -15,7 +15,7 @@ class UserStatus extends Model
      *
      * @var array<int, string>
      */
-    protected $fillable = ["name"];
+    protected $fillable = ['name'];
 
     /**
      * Get the users associated with the Status.

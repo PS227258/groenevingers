@@ -13,7 +13,7 @@ class ShopController extends Controller
     {
         $products = Product::paginate(15);
 
-        return view("shop.index", compact("products"));
+        return view('shop.index', compact('products'));
     }
 
     /**
@@ -23,6 +23,6 @@ class ShopController extends Controller
     {
         $product = Product::find($id);
 
-        return view("shop.show", ["product" => $product]);
+        return view('shop.show', ['product' => $product]);
     }
 }

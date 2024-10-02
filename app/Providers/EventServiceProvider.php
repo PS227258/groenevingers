@@ -19,7 +19,7 @@ class EventServiceProvider extends ServiceProvider
         \SocialiteProviders\Manager\SocialiteWasCalled::class => [
             // add your listeners (aka providers) here
             \SocialiteProviders\GitHub\GitHubExtendSocialite::class.'@handle',
-        ]
+        ],
     ];
 
     /**

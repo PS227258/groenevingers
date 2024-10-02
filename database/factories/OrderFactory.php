@@ -21,16 +21,16 @@ class OrderFactory extends Factory
         $updatedAt = $this->faker->dateTimeBetween($createdAt, 'now'); // Random date between created_at and now
 
         return [
-            "status_id" => OrderStatus::inRandomOrder()->first()->id,
-            "customer_name" => fake()->name(),
-            "email" => fake()->unique()->safeEmail(),
-            "phone" => fake()->unique()->phoneNumber(),
-            "address" => fake()->address(),
-            "city" => fake()->city(),
-            "zipcode" => fake()->postcode(),
-            "price" => fake()->randomFloat(2, 10, 100),
-            "created_at" => $createdAt,
-            "updated_at" => $updatedAt,
+            'status_id' => OrderStatus::inRandomOrder()->first()->id,
+            'customer_name' => fake()->name(),
+            'email' => fake()->unique()->safeEmail(),
+            'phone' => fake()->unique()->phoneNumber(),
+            'address' => fake()->address(),
+            'city' => fake()->city(),
+            'zipcode' => fake()->postcode(),
+            'price' => fake()->randomFloat(2, 10, 100),
+            'created_at' => $createdAt,
+            'updated_at' => $updatedAt,
         ];
     }
 }

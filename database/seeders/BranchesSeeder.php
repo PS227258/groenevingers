@@ -12,16 +12,16 @@ class BranchesSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table("branches")->insert([
-            "name" => "Veldhoven",
+        DB::table('branches')->insert([
+            'name' => 'Veldhoven',
         ]);
 
-        DB::table("branches")->insert([
-            "name" => "Nuenen",
+        DB::table('branches')->insert([
+            'name' => 'Nuenen',
         ]);
 
-        DB::table("branches")->insert([
-            "name" => "Best",
+        DB::table('branches')->insert([
+            'name' => 'Best',
         ]);
     }
 }
