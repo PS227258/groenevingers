@@ -23,7 +23,7 @@ class Product extends Model
         "name",
         "description",
         "price",
-        "supplu",
+        "supply",
         "img_src",
         "color",
         "height_cm",
