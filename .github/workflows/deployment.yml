@@ -1,5 +1,4 @@
 name: Laravel deployment
-run-name: ${{ github.actor }} is trying to deploy groenevingers.
 
 on:
   push:
@@ -39,6 +38,7 @@ jobs:
       - name: Run database migrations
         env:
           DB_CONNECTION: sqlite
+          DB_DATABASE: database/database.sqlite
         run: php artisan migrate:fresh --seed --no-interaction --force
 
       - name: Run tests
