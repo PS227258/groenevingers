@@ -33,6 +33,9 @@ jobs:
       - name: Generate application key
         run: php artisan key:generate
 
+      - name: Create Database file
+        run: touch database/database.sqlite
+
       - name: Run database migrations
         env:
           DB_CONNECTION: sqlite
