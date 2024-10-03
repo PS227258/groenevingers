@@ -13,16 +13,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    services:
-      mysql:
-        image: mysql:8.0
-        env:
-          MYSQL_ROOT_PASSWORD: secret
-          MYSQL_DATABASE: deployment_db
-        ports:
-          - 3306:3306
-        options: --health-cmd='mysqladmin ping --silent' --health-interval=10s --health-timeout=5s --health-retries=3
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -45,13 +35,8 @@ jobs:
 
       - name: Run database migrations
         env:
-          DB_CONNECTION: mysql
-          DB_HOST: 127.0.0.1
-          DB_PORT: 3306
-          DB_DATABASE: deployment_db
-          DB_USER: root
-          DB_PASSWORD: secret
-        run: php artisan migrate --no-interaction --force
+          DB_CONNECTION: sqlite
+        run: php artisan migrate:fresh --seed --no-interaction --force
 
       - name: Run tests
         run: vendor/bin/phpunit
