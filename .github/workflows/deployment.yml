@@ -35,6 +35,14 @@ jobs:
       - name: Create Database file
         run: touch database/database.sqlite
 
+      - name: Create storage and cache directories
+        run: |
+          mkdir -p storage/framework/cache/data
+          mkdir -p storage/framework/sessions
+          mkdir -p storage/framework/views
+          mkdir -p storage/logs
+          chmod -R 777 storage
+
       - name: Run database migrations
         env:
           DB_CONNECTION: sqlite
