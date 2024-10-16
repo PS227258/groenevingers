@@ -37,6 +37,7 @@ jobs:
 
       - name: Create storage and cache directories
         run: |
+          mkdir -p storage/app/public
           mkdir -p storage/framework/cache/data
           mkdir -p storage/framework/sessions
           mkdir -p storage/framework/views

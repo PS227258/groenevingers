@@ -2,7 +2,10 @@
 
 namespace Tests\Feature\Auth;
 
+use App\Models\Branch;
+use App\Models\Role;
 use App\Models\User;
+use App\Models\UserStatus;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Hash;
 use Tests\TestCase;
@@ -10,6 +13,15 @@ use Tests\TestCase;
 class PasswordUpdateTest extends TestCase
 {
     use RefreshDatabase;
+
+    public function setUp(): void
+    {
+        parent::setUp();
+
+        Role::factory()->create(['name' => 'Admin']);
+        Branch::factory()->create(['name' => 'Nuenen']);
+        UserStatus::factory()->create(['name' => 'Active']);
+    }
 
     public function test_password_can_be_updated(): void
     {

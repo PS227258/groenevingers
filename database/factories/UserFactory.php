@@ -33,6 +33,7 @@ class UserFactory extends Factory
             'branch_id' => Branch::inRandomOrder()->first()->id,
             'status_id' => UserStatus::inRandomOrder()->first()->id,
             'phone' => $this->faker->phoneNumber(),
+            'email_verified_at' => $this->faker->dateTimeBetween('-1 year', 'now'),
             'created_at' => $this->faker->dateTimeBetween('-1 year', 'now'),
             'updated_at' => $this->faker->dateTimeBetween('-1 year', 'now'),
         ];

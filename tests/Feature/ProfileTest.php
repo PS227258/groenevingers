@@ -2,13 +2,25 @@
 
 namespace Tests\Feature;
 
+use App\Models\Branch;
+use App\Models\Role;
 use App\Models\User;
+use App\Models\UserStatus;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 class ProfileTest extends TestCase
 {
     use RefreshDatabase;
+
+    public function setUp(): void
+    {
+        parent::setUp();
+
+        Role::factory()->create(['name' => 'Admin']);
+        Branch::factory()->create(['name' => 'Nuenen']);
+        UserStatus::factory()->create(['name' => 'Active']);
+    }
 
     public function test_profile_page_is_displayed(): void
     {
@@ -26,6 +38,7 @@ class ProfileTest extends TestCase
         $response = $this->actingAs($user)->patch("/profile", [
             "name" => "Test User",
             "email" => "test@example.com",
+            "status" => 1,
         ]);
 
         $response->assertSessionHasNoErrors()->assertRedirect("/profile");
@@ -34,6 +47,7 @@ class ProfileTest extends TestCase
 
         $this->assertSame("Test User", $user->name);
         $this->assertSame("test@example.com", $user->email);
+        $this->assertSame(1, $user->status->id);
         $this->assertNull($user->email_verified_at);
     }
 
@@ -44,6 +58,7 @@ class ProfileTest extends TestCase
         $response = $this->actingAs($user)->patch("/profile", [
             "name" => "Test User",
             "email" => $user->email,
+            "status" => 1,
         ]);
 
         $response->assertSessionHasNoErrors()->assertRedirect("/profile");

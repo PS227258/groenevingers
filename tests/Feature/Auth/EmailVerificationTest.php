@@ -2,7 +2,10 @@
 
 namespace Tests\Feature\Auth;
 
+use App\Models\Branch;
+use App\Models\Role;
 use App\Models\User;
+use App\Models\UserStatus;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -13,6 +16,15 @@ use Tests\TestCase;
 class EmailVerificationTest extends TestCase
 {
     use RefreshDatabase;
+
+    public function setUp(): void
+    {
+        parent::setUp();
+
+        Role::factory()->create(['name' => 'Admin']);
+        Branch::factory()->create(['name' => 'Nuenen']);
+        UserStatus::factory()->create(['name' => 'Active']);
+    }
 
     public function test_email_verification_screen_can_be_rendered(): void
     {
