@@ -19,17 +19,12 @@ class OrderrowFactory extends Factory
      */
     public function definition(): array
     {
-        $createdAt = $this->faker->dateTimeBetween('-15 days', 'now'); // Random date within the past year
-        $updatedAt = $this->faker->dateTimeBetween($createdAt, 'now'); // Random date between created_at and now
-
         return [
             'order_id' => Order::factory(),
-            'product_id' => Product::inRandomOrder()->first()->id,
-            'status_id' => OrderrowStatus::inRandomOrder()->first()->id,
+            'product_id' => Product::factory(),
+            'status_id' => OrderrowStatus::factory(),
             'quantity' => fake()->randomFloat(0, 1, 9),
-            'price' => Product::inRandomOrder()->first()->price,
-            'created_at' => $createdAt,
-            'updated_at' => $updatedAt,
+            'price' => Product::factory(),
         ];
     }
 }

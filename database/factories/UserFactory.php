@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Branch;
+use App\Models\Role;
 use App\Models\UserStatus;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
@@ -24,11 +26,11 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            'role_id' => 1,
+            'role_id' => Role::inRandomOrder()->first()->id,
             'email' => $this->faker->email(),
             'password' => Hash::make('password'),
             'name' => $this->faker->name(),
-            'branch_id' => $this->faker->randomFloat(0, 1, 3),
+            'branch_id' => Branch::inRandomOrder()->first()->id,
             'status_id' => UserStatus::inRandomOrder()->first()->id,
             'phone' => $this->faker->phoneNumber(),
             'created_at' => $this->faker->dateTimeBetween('-1 year', 'now'),
