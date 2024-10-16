@@ -2,12 +2,12 @@
 
 namespace Tests\Unit;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Models\Categorie;
 use App\Models\Order;
 use App\Models\Orderrow;
 use App\Models\OrderrowStatus;
 use App\Models\Product;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 class CartTest extends TestCase
@@ -22,9 +22,9 @@ class CartTest extends TestCase
 
         $order = Order::factory()->create();
         $order_id = $order->id;
-        
+
         $quantity = 5;
-       
+
         // Create categories and products
         $product = Product::factory()->for(Categorie::factory()->create())->create();
 
@@ -32,8 +32,8 @@ class CartTest extends TestCase
         $this->post('/order', ['order_id' => $order_id, 'status_id' => $status_id, 'product_id' => $product->id, 'quantity' => $quantity, 'product_price' => round($product->price, 2)]);
 
         // Assert
-        $this->assertDatabaseHas('orderrow_statuses' , [
-            'id' => $status_id
+        $this->assertDatabaseHas('orderrow_statuses', [
+            'id' => $status_id,
         ]);
 
         $this->assertDatabaseHas('orderrows', [
@@ -51,7 +51,7 @@ class CartTest extends TestCase
         $orderrow_id = $orderrow->id;
 
         $this->assertDatabaseHas('orderrows', [
-            'id' => $orderrow_id
+            'id' => $orderrow_id,
         ]);
 
         // Act
