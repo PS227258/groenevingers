@@ -99,3 +99,61 @@ jobs:
 
       - name: Run linter
         run: vendor/bin/pint
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: test
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2.0'
+          extensions: mbstring, bcmath, mysqli
+          ini-values: post_max_size=256M, max_execution_time=300
+    
+      - name: Install Composer dependencies
+        run: composer install --prefer-dist --no-progress --no-interaction
+
+      - name: Install Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20'
+
+      - name: Install NPM dependencies
+        run: npm install
+
+      - name: Create .env file
+        run: cp .env.example .env
+  
+      - name: Generate application key
+        run: php artisan key:generate
+
+      - name: Create Database file
+        run: touch database/database.sqlite
+
+      - name: Run database migrations
+        env:
+          DB_CONNECTION: sqlite
+          DB_DATABASE: database/database.sqlite
+        run: php artisan migrate:fresh --seed --no-interaction --force
+
+      - name: Create storage and cache directories
+        run: |
+          mkdir -p storage/app/public
+          mkdir -p storage/framework/cache/data
+          mkdir -p storage/framework/sessions
+          mkdir -p storage/framework/views
+          mkdir -p storage/logs
+          chmod -R 777 storage
+
+      - name: Optimize the application for deployment
+        run: | 
+          php artisan optimize
+          php artisan event:cache
+          php artisan view:cache
+        env:
+          APP_DEBUG: false
