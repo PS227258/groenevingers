@@ -37,14 +37,6 @@ jobs:
       - name: Build Vite assets
         run: npm run build
 
-      - name: Run database migrations
-        env:
-          DB_CONNECTION: sqlite
-          DB_DATABASE: database/database.sqlite
-        run: php artisan migrate:fresh --seed --no-interaction --force
-
-
-
       - name: Run linter
         run: vendor/bin/pint
 
@@ -65,6 +57,12 @@ jobs:
 
       - name: Create Database file
         run: touch database/database.sqlite
+
+      - name: Run database migrations
+        env:
+          DB_CONNECTION: sqlite
+          DB_DATABASE: database/database.sqlite
+        run: php artisan migrate:fresh --seed --no-interaction --force
 
       - name: Create storage and cache directories
         run: |
